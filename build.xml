@@ -1,0 +1,24 @@
+<project name="mt" default="build" basedir=".">
+  <property name="name" location="mt"/>
+  <property environment="env"/>
+
+  <target name="build">
+    <delete dir="build"/>
+    <mkdir dir="build"/>
+    <copy todir="build">
+    	<fileset dir=".">
+    		<include name="src/**"/>
+    	</fileset>
+    </copy>
+    <javac srcdir="build/src" debug="true" classpath="${name}-lib.jar" source="1.5" target="1.5">
+      <compilerarg value="-Xlint:deprecation"/>
+      <include name="**/*.java"/>
+    </javac>
+    <jar destfile="${name}-submit.jar" basedir="build/src">
+	</jar>
+	<delete dir="build"/>
+	
+  </target>
+</project>
+                                 
+                                 
